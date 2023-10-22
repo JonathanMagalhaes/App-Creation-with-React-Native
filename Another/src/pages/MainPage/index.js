@@ -1,11 +1,44 @@
 import React from "react"
-import { View, Text, StyleSheet, Linking } from 'react-native'
+import { View, Text, StyleSheet, Linking, FlatList } from 'react-native'
 import * as Animatable from 'react-native-animatable'
-
 import { useNavigation } from '@react-navigation/native'
 
 export default function MainPage(){
     const navigation = useNavigation();
+
+    const CONTENT =[
+      {
+        id: 'MPYYj0Ys',
+        title:'Conteúdo 1',
+      },
+      {
+        id: 'EM6odSZd',
+        title:'Conteúdo 2',
+      },
+      {
+        id: 'EFtRstg4',
+        title:'Conteúdo 3',
+      },
+      {
+        id: 'oiXMGAiL',
+        title:'Conteúdo 4',
+      },
+      {
+        id: '7xesG38n',
+        title:'Conteúdo 5',
+      },
+      {
+        id: 'V3yUF6yL',
+        title:'Conteúdo 6',
+      },
+    ];
+
+    const Item = ({title}) => (
+      <View style={styles.box}>
+        <Text style={styles.boxText}>{title}</Text>
+      </View>
+    );
+
     return(
         <View style={styles.container}>
             <Animatable.View animation="lightSpeedIn" delay={200} style={styles.navbar}>
@@ -18,29 +51,19 @@ export default function MainPage(){
                     <Text style={styles.links} onPress={() =>navigation.navigate('Conta')}>Conta</Text>
                 </View>
             </Animatable.View>
-
+            
             <View style={styles.subcontainer}>
-                <Animatable.View animation="slideInLeft" delay={100}>
-                    <View style={styles.box}>
-                        <Text style={styles.boxText}>Conteudo 1</Text>
-                    </View>
-                </Animatable.View>
-                <Animatable.View animation="slideInRight" delay={100}>
-                    <View style={styles.box}>
-                        <Text style={styles.boxText}>Conteudo 2</Text>
-                    </View>
-                </Animatable.View>
-                <Animatable.View animation="slideInLeft" delay={100}>
-                    <View style={styles.box}>
-                        <Text style={styles.boxText}>Conteudo 3</Text>
-                    </View>
-                </Animatable.View>
+                <FlatList
+                  data={CONTENT}
+                  renderItem={({item}) => <Item title={item.title} />}
+                  keyExtractor={item => item.id}
+                />
                 <Animatable.View animation="flipInX" delay={100}>
                 <Text style={styles.footer} onPress ={()=> {
                     Linking.openURL('https://github.com/JonathanMagalhaes');
                 }} >Desenvolvido por Jonathan Magalhães</Text>
                 </Animatable.View>
-            </View>
+            </View> 
         </View>
     )
 }

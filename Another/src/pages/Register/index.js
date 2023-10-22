@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable'
 
 export default function Register(){
     const navigation = useNavigation();
+
     return(
         <View style={styles.container}>
             <Animatable.View animation="fadeInDown" style={styles.containerHeader} delay={200}>
@@ -15,14 +16,15 @@ export default function Register(){
             <Animatable.View animation="fadeInUp" style={styles.containerForm} delay={200}>
                 <Text style={styles.title}>Email<Text style={{color: 'red'}}>*</Text></Text>
                 <TextInput
-                keyboardType="email-address"
-                maxLength={16} 
+                id="email"
+                keyboardType="email-address" 
                 placeholder='Informe seu melhor email...'
                 style={styles.input}
                 />
 
                 <Text style={styles.title}>Senha<Text style={{color: 'red'}}>*</Text></Text>
                 <TextInput
+                id="psw"
                 secureTextEntry={true}
                 maxLength={32} 
                 placeholder='Digite sua senha...'
@@ -31,6 +33,7 @@ export default function Register(){
 
                 <Text style={styles.title}>Confirme sua Senha<Text style={{color: 'red'}}>*</Text></Text>
                 <TextInput
+                id="cpsw"
                 secureTextEntry={true}
                 maxLength={32}
                 placeholder='Confirme sua senha...'
@@ -38,10 +41,11 @@ export default function Register(){
                 />
 
                 <Text style={styles.title}>Telefone</Text>
-                <TextInput 
+                <TextInput
+                id="tel" 
                 keyboardType={'phone-pad'}
                 maxLength={11}
-                placeholder='(xx)xxxx-xxxx'
+                placeholder='(xx)xxxxx-xxxx'
                 style={styles.input}
                 />
 

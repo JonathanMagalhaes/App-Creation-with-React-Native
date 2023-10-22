@@ -16,12 +16,14 @@ export default function SignIn() {
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.title}>Email</Text>
         <TextInput 
+          id="email"
           placeholder='Digite um email...'
           style={styles.input}
         />
 
         <Text style={styles.title}>Senha</Text>
         <TextInput
+        id="psw"
           secureTextEntry={true}
           maxLength={32} 
           placeholder='Digite sua senha...'
@@ -29,10 +31,10 @@ export default function SignIn() {
         />
 
         <TouchableOpacity style={styles.buttonSignin} onPress={() => navigation.navigate('MainPage')}>
-          <Text style={styles.buttonText}>Acessar</Text>
+          <Text id="signinBtn" style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonRegister} onPress={() =>navigation.navigate('Register')}>
-          <Text style={styles.registerText}>Não possui uma conta? Cadastre-se</Text>
+          <Text style={styles.registerText}>Não possui uma conta? <Text style={styles.registerSubtext}>Cadastre-se</Text></Text>
         </TouchableOpacity>
 
       </Animatable.View>
@@ -94,5 +96,21 @@ const styles = StyleSheet.create({
   },
   registerText:{
     color: '#a1a1a1'
+  },
+  registerSubtext:{
+    color: '#a1a1a1',
+    fontWeight: 'bold',
   }
 })
+
+/* 
+  color: '#a1b1a3', 
+  fontWeight: 'italic',
+  fontSize: 18,
+  marginTop: 14,
+  padding: 5 10,
+  alignSelf: 'center',
+  justifyContent: 'center',
+
+
+*/
